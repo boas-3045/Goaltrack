@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f8fc">
+  <meta name="description" content="A calm, encouraging space to plan goals, build habits, and see your progress.">
+  <title>Goal Achievement Tracker</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%234d67ef'/%3E%3Cpath d='m11 21 6 6 13-14' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css?v=20260929-phone-centering">
+  <script defer src="js/storage.js"></script>
+  <script defer src="js/app.js?v=20260929-dashboard-entry-fix"></script>
+</head>
+<body>
+  <section class="welcome-screen" id="welcomeScreen" aria-labelledby="welcomeHeading">
+    <img class="welcome-photo" src="assets/raggiana-bird-of-paradise.jpg" alt="Raggiana bird-of-paradise spreading its wings in a tree at Varirata National Park, Papua New Guinea">
+    <a class="welcome-brand" href="#welcomeScreen" aria-label="Goalspace home"><span class="welcome-brand-mark">✓</span>Goalspace<span class="welcome-brand-dot">.</span></a>
+    <main class="welcome-content">
+      <div class="welcome-kicker"><span class="welcome-kicker-mark">✦</span> A fresh start, at your pace</div>
+      <h1 id="welcomeHeading">Make today a step toward something bigger.</h1>
+      <p class="welcome-intro">Give your dreams a little structure. Build habits, make progress, and celebrate each step along the way.</p>
+      <div class="welcome-quote-card">
+        <div class="welcome-quote-label"><span>✧</span> A thought for your journey</div>
+        <blockquote id="welcomeQuote" aria-live="polite">“Great things are done by a series of small things brought together.”</blockquote>
+        <div class="welcome-quote-footer"><cite id="welcomeQuoteAuthor">— Vincent van Gogh</cite><span class="quote-cycle-note">A new thought every 10 minutes</span></div>
+      </div>
+      <button class="welcome-enter" id="enterWorkspace" type="button">Enter my workspace <span aria-hidden="true">→</span></button>
+      <p class="welcome-prompt">Your next chapter starts with one small step.</p>
+    </main>
+    <div class="welcome-image-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Raggiana_Bird-of-paradise_0A2A5379.jpg" target="_blank" rel="noreferrer">JJ Harrison</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a></div>
+  </section>
+  <div class="app-shell" id="appShell" hidden>
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#dashboard" data-page="dashboard" aria-label="Goalspace home"><span class="brand-mark">✓</span><span>Goalspace<span class="brand-dot">.</span></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav-list">
+        <button class="nav-item active" data-page="dashboard"><span class="nav-icon">⌂</span>Dashboard</button>
+        <button class="nav-item" data-page="goals"><span class="nav-icon">◎</span>My Goals <span class="nav-count" id="goalNavCount">0</span></button>
+        <button class="nav-item" data-page="create"><span class="nav-icon">＋</span>Create Goal</button>
+        <button class="nav-item" data-page="progress"><span class="nav-icon">◒</span>Progress Tracker</button>
+        <button class="nav-item" data-page="habits"><span class="nav-icon">↻</span>Habit Tracker</button>
+        <button class="nav-item" data-page="calendar"><span class="nav-icon">▦</span>Calendar</button>
+        <button class="nav-item" data-page="achievements"><span class="nav-icon">✧</span>Achievements</button>
+        <button class="nav-item" data-page="reports"><span class="nav-icon">▤</span>Reports</button>
+        <button class="nav-item" data-page="notifications"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></span>Notifications <span class="nav-count unread-count" id="notificationCount">0</span></button>
+      </nav>
+      <div class="side-label side-label-bottom">PERSONAL</div>
+      <nav class="nav-list">
+        <button class="nav-item" data-page="profile"><span class="nav-icon">♙</span>Profile</button>
+        <button class="nav-item" data-page="settings"><span class="nav-icon">⚙</span>Settings</button>
+      </nav>
+      <div class="sidebar-quote"><span class="quote-spark">✦</span><p>Small steps every day add up to big change.</p><span>— James Clear</span></div>
+      <button class="profile-mini" data-page="profile"><span class="avatar" id="sideAvatar">A</span><span class="profile-mini-text"><strong id="sideName">Alex Morgan</strong><small>Personal space</small></span><span class="more-dots">···</span></button>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+        <div class="topbar-leading"><button class="home-return" id="returnHome" type="button" aria-label="Back to welcome home"><span aria-hidden="true">←</span> Home</button><div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumbPage">Dashboard</strong></div></div>
+        <div class="topbar-actions"><button class="icon-button search-shortcut" id="globalSearchBtn" type="button" aria-label="Search goals" title="Search goals"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.7"></circle><path d="m16 16 4.3 4.3"></path></svg></button><button class="icon-button bell-button" data-page="notifications" aria-label="Notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span class="bell-dot" id="bellDot"></span></button><div class="profile-menu-wrap"><button class="top-avatar" id="topAvatar" type="button" aria-label="Open profile options" aria-haspopup="menu" aria-expanded="false">A</button><div class="profile-menu" id="profileMenu" role="menu" aria-label="Profile options" hidden><div class="profile-menu-heading">Your account</div><button type="button" role="menuitem" data-profile-action="view">View profile</button><button type="button" role="menuitem" data-profile-action="edit">Edit name and details</button><button type="button" role="menuitem" data-profile-action="photo">Change profile picture</button><button type="button" role="menuitem" data-profile-action="remove-photo" id="removeProfilePhoto" disabled>Remove profile picture</button><div class="profile-menu-divider"></div><button type="button" role="menuitem" data-profile-action="settings">Settings</button></div></div></div>
+      </header>
+      <div class="content-wrap" id="pageContent" tabindex="-1"></div>
+    </main>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modalBackdrop" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div id="modalContent"></div></section></div>
+</body>
+</html>
